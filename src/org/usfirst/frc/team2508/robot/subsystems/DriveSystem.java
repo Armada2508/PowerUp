@@ -10,20 +10,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSystem extends Subsystem {
 	
+	// declare talons
 	public TalonSRX upperLeftTalon;
 	public TalonSRX lowerLeftTalon;
 	public TalonSRX upperRightTalon;
 	public TalonSRX lowerRightTalon;
 
+	// constructor
 	public DriveSystem(){
+		
+		// map talons
 		upperLeftTalon = new TalonSRX(0);
 		lowerLeftTalon = new TalonSRX(1);
 		upperRightTalon = new TalonSRX(3);
 		lowerRightTalon = new TalonSRX(4);
 		
+		// configures upper talons as main talons, lower talons as followers
 		initTalonSet(upperLeftTalon, lowerLeftTalon, 1);
 		initTalonSet(upperRightTalon, lowerRightTalon, 2);
 		
+		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		upperRightTalon.setInverted(true);
 		upperLeftTalon.setSensorPhase(true);
 		upperLeftTalon.setInverted(false);
@@ -35,6 +41,7 @@ public class DriveSystem extends Subsystem {
 
 	}
 	
+	// configures a main talon and the follower talon
 	public void initTalonSet(TalonSRX mainTalon, TalonSRX followerTalon, int pidIdx){
 		mainTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, pidIdx, RobotMap.DriveSystemTimeoutMs);
 		mainTalon.configNominalOutputForward(0f, RobotMap.DriveSystemTimeoutMs);
@@ -53,11 +60,13 @@ public class DriveSystem extends Subsystem {
 		followerTalon.follow(mainTalon);
 	}
 	
+	// takes an L and R speed and uses the talons to drive at that speed
 	public void drive(double powerL, double powerR){
 		upperLeftTalon.set(ControlMode.Velocity, processDeadband(powerL));
 		upperRightTalon.set(ControlMode.Velocity, processDeadband(powerR));
 	}
 	
+	// gives a deadzone for the input, so robot won't react to small movements
 	private double processDeadband(double input){
 		double output;
 		
