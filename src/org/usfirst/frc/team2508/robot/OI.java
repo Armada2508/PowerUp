@@ -1,8 +1,5 @@
 package org.usfirst.frc.team2508.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
-
-import org.usfirst.frc.team2508.robot.commands.ExampleCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
