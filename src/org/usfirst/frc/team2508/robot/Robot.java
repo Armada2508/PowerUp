@@ -77,6 +77,10 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		SmartDashboard.putData("Auto mode", chooser);
+		
+		chooser.addDefault("Default Auto", new AutonomousStraightCommand());
 	}
 
 	/**

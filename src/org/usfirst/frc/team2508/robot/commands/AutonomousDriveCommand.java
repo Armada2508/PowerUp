@@ -10,6 +10,9 @@ public class AutonomousDriveCommand extends Command {
 	double leftSpeed;
 	double rightSpeed;
     public AutonomousDriveCommand(double leftSpeed, double rightSpeed) {
+    	
+    	// [DEBUG]
+    	
     	this.leftSpeed = leftSpeed;
     	this.rightSpeed = rightSpeed;
         // Use requires() here to declare subsystem dependencies
@@ -19,6 +22,8 @@ public class AutonomousDriveCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("AutonomousDriveCommand called with leftSpeed " + leftSpeed + " and rightSpeed " + rightSpeed);
+    	
     	Robot.DriveSystem.drive(leftSpeed, rightSpeed);
     }
 

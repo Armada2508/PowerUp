@@ -20,20 +20,21 @@ public class DriveSystem extends Subsystem {
 	public DriveSystem(){
 		
 		// map talons
-		upperLeftTalon = new TalonSRX(0);
-		lowerLeftTalon = new TalonSRX(1);
-		upperRightTalon = new TalonSRX(3);
-		lowerRightTalon = new TalonSRX(4);
+		upperRightTalon = new TalonSRX(0);
+		lowerRightTalon = new TalonSRX(1);
+		lowerLeftTalon = new TalonSRX(3);
+		upperLeftTalon = new TalonSRX(4);
 		
 		// configures upper talons as main talons, lower talons as followers
-		initTalonSet(upperLeftTalon, lowerLeftTalon, 1);
-		initTalonSet(upperRightTalon, lowerRightTalon, 2);
+		initTalonSet(upperRightTalon, lowerRightTalon, 1);
+		initTalonSet(lowerLeftTalon, upperLeftTalon, 2);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		upperRightTalon.setInverted(true);
-		upperLeftTalon.setSensorPhase(true);
-		upperLeftTalon.setInverted(false);
-		upperRightTalon.setSensorPhase(false);
+		lowerRightTalon.setInverted(true);
+		upperRightTalon.setSensorPhase(true);
+		lowerLeftTalon.setSensorPhase(true);
+		lowerLeftTalon.setInverted(false);
 	}
 	
 	@Override
@@ -43,7 +44,7 @@ public class DriveSystem extends Subsystem {
 	
 	// configures a main talon and the follower talon
 	public void initTalonSet(TalonSRX mainTalon, TalonSRX followerTalon, int pidIdx){
-		mainTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, pidIdx, RobotMap.DriveSystemTimeoutMs);
+		mainTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, RobotMap.DriveSystemTimeoutMs, RobotMap.DriveSystemTimeoutMs);
 		mainTalon.configNominalOutputForward(0f, RobotMap.DriveSystemTimeoutMs);
 		mainTalon.configNominalOutputReverse(0f, RobotMap.DriveSystemTimeoutMs);
 		mainTalon.configPeakOutputForward(+12.0f, RobotMap.DriveSystemTimeoutMs);
@@ -62,8 +63,8 @@ public class DriveSystem extends Subsystem {
 	
 	// takes an L and R speed and uses the talons to drive at that speed
 	public void drive(double powerL, double powerR){
-		upperLeftTalon.set(ControlMode.Velocity, processDeadband(powerL));
 		upperRightTalon.set(ControlMode.Velocity, processDeadband(powerR));
+		lowerLeftTalon.set(ControlMode.Velocity, processDeadband(powerL));
 	}
 	
 	// gives a deadzone for the input, so robot won't react to small movements

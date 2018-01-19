@@ -11,8 +11,8 @@ public class RobotMap {
 	
 	public static final double MaxDriveRPM = 2500;
 
-	public static final double DriveSystemP = 0.5;
-	public static final double DriveSystemI = 0.002;
+	public static final double DriveSystemP = 0.5*1023/4096;
+	public static final double DriveSystemI = 0.002*1023/4096;
 	public static final double DriveSystemD = 0;
 	public static final double DriveSystemF = 0;
 	public static final int DriveSystemTimeoutMs = 0;
