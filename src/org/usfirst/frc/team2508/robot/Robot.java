@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2508.robot.commands.AutonomousStraightCommand;
+import org.usfirst.frc.team2508.robot.commands.DriveRobot;
 import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
 
 /**
@@ -99,6 +100,10 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		// starts a DriveRobot instance, handles driving in teleop
+		Command driveRobotCMD = new DriveRobot();
+		driveRobotCMD.start();
 	}
 
 	/**
