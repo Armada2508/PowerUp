@@ -5,7 +5,11 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 
 public class AutonomousStraightCommand extends CommandGroup {
 	public AutonomousStraightCommand() {
+		// sets speed to 1/10 max going forward
 		addSequential(new AutonomousDriveCommand(.1, .1));
-		addSequential(new WaitCommand(10));
+		// waits for 5 seconds
+		addSequential(new WaitCommand(5));
+		// stops driving
+		addSequential(new AutonomousDriveCommand(0, 0));
 	}
 }
