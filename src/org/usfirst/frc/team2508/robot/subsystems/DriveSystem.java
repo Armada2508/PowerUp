@@ -25,7 +25,7 @@ public class DriveSystem extends Subsystem {
 		lowerLeftTalon = new TalonSRX(3);
 		upperLeftTalon = new TalonSRX(4);
 		
-		// configures upper talons as main talons, lower talons as followers
+		// configures talons as main talons and other talons as followers
 		initTalonSet(upperRightTalon, lowerRightTalon, 1);
 		initTalonSet(lowerLeftTalon, upperLeftTalon, 2);
 		

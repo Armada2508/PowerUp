@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2508.robot.commands.AutonomousStraightCommand;
 import org.usfirst.frc.team2508.robot.commands.DriveRobot;
 import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team2508.robot.subsystems.CubeSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,6 +22,7 @@ import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
  */
 public class Robot extends IterativeRobot {
 	public static final DriveSystem DriveSystem = new DriveSystem();
+	public static final CubeSystem CubeSystem = new CubeSystem();
 	public static OI oi;
 
 	Command autonomousCommand;

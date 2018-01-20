@@ -10,9 +10,7 @@ public class AutonomousDriveCommand extends Command {
 	double leftSpeed;
 	double rightSpeed;
     public AutonomousDriveCommand(double leftSpeed, double rightSpeed) {
-    	
-    	// [DEBUG]
-    	
+    	    	
     	this.leftSpeed = leftSpeed;
     	this.rightSpeed = rightSpeed;
         // Use requires() here to declare subsystem dependencies
