@@ -58,7 +58,7 @@ public class DriveRobot extends Command {
 
 		Pair pair = doTimeRamp(20, new Pair(LCalc1,RCalc1));
 		
-		Robot.DriveSystem.drive(pair.left,pair.right);    	
+		Robot.DriveSystem.drive(-(pair.left),-(pair.right));    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

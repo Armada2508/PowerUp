@@ -7,6 +7,9 @@ package org.usfirst.frc.team2508.robot;
  * floating around.
  */
 public class RobotMap {
+	// position robot starts in: 1 is leftmost, 2 is middle, 3 is right
+	public static final int StartPosition = 1;
+	
 	// stick must be moved this far to drive
 	public static final double DeadbandThreshold = 0.05;
 	

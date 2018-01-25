@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2508.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,8 +9,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2508.robot.RobotMap;
 import org.usfirst.frc.team2508.robot.commands.AutonomousStraightCommand;
 import org.usfirst.frc.team2508.robot.commands.DriveRobot;
+import org.usfirst.frc.team2508.robot.commands.AutoCodeStation1;
+import org.usfirst.frc.team2508.robot.commands.AutoCodeStation2;
+import org.usfirst.frc.team2508.robot.commands.AutoCodeStation3;
 import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team2508.robot.subsystems.CubeSystem;
 
@@ -35,8 +40,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new AutonomousStraightCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addDefault("Left Drive Station", new AutoCodeStation1());
+		chooser.addObject("Middle Drive Station", new AutoCodeStation2());
+		chooser.addObject("Right Drive Station", new AutoCodeStation3());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
@@ -82,8 +88,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.start();
 		
 		SmartDashboard.putData("Auto mode", chooser);
-		
-		chooser.addDefault("Default Auto", new AutonomousStraightCommand());
 	}
 
 	/**
