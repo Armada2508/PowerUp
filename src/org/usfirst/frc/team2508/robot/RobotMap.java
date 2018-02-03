@@ -24,7 +24,7 @@ public class RobotMap {
 	public static final int DriveSystemTimeoutMs = 0;
 	
 	// speed of the cube intake/output system
-	public static final double CubeIntakeRPM = 750;
+	public static final double CubeIntakePercentOutput = .4;
 	public static final double CubeSystemTime = 0.5;
 	public static final double CubeLiftRPM = 750;
 }

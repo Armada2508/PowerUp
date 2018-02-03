@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2508.robot;
 
+import org.usfirst.frc.team2508.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -35,7 +37,14 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	
+
+	public OI() {
+		y.whileHeld(new LiftCube());
+		a.whileHeld(new LowerCube());
+		x.whileHeld(new GrabCube());
+		b.whileHeld(new ReleaseCube());
+	}
+		
 	// controller on port 0
 	public Joystick stick = new Joystick(0);
 	

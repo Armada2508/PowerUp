@@ -13,25 +13,28 @@ public class CubeSystem extends Subsystem {
 	// declare talons
 	public TalonSRX LIntakeTalon;
 	public TalonSRX RIntakeTalon;
-	public TalonSRX LLiftTalon;
-	public TalonSRX RLiftTalon;
+	public TalonSRX mainLiftTalon;
+	public TalonSRX followerLiftTalon;
 
 	// constructor
 	public CubeSystem(){
 		
 		// map talons
-		LIntakeTalon = new TalonSRX(5);
-		RIntakeTalon = new TalonSRX(6);
-		LLiftTalon = new TalonSRX(7);
-		RLiftTalon = new TalonSRX(8);
+		LIntakeTalon = new TalonSRX(1);
+		RIntakeTalon = new TalonSRX(2);
+		mainLiftTalon = new TalonSRX(5);
+		followerLiftTalon = new TalonSRX(6);
 		
 		// configures LLiftTalon as main talon and RLiftTalon as follower
-		initTalonSet(LLiftTalon, RLiftTalon, 1);
+		TalonHelper.initTalonSet(mainLiftTalon, followerLiftTalon, 0);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		LIntakeTalon.setInverted(false);
-		RIntakeTalon.setInverted(true);
-		LLiftTalon.setSensorPhase(true);
+		RIntakeTalon.setInverted(false);
+		
+		mainLiftTalon.setInverted(true);
+		followerLiftTalon.setInverted(true);
+		mainLiftTalon.setSensorPhase(true);
 		
 	}
 	
@@ -40,62 +43,38 @@ public class CubeSystem extends Subsystem {
 
 	}
 	
-	// configures a main talon and the follower talon
-	public void initTalonSet(TalonSRX mainTalon, TalonSRX followerTalon, int pidIdx){
-		mainTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, RobotMap.DriveSystemTimeoutMs, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.configNominalOutputForward(0f, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.configNominalOutputReverse(0f, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.configPeakOutputForward(+12.0f, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.configPeakOutputReverse(-12.0f, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.set(ControlMode.Velocity, 0f);
-		
-		mainTalon.config_kP(0, RobotMap.DriveSystemP, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.config_kI(0, RobotMap.DriveSystemI, RobotMap.DriveSystemTimeoutMs); 
-		mainTalon.config_kD(0, RobotMap.DriveSystemD, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.config_kF(0, RobotMap.DriveSystemF, RobotMap.DriveSystemTimeoutMs);
-		mainTalon.configClosedloopRamp(0.5, RobotMap.DriveSystemTimeoutMs);
-    	
-		followerTalon.set(ControlMode.Follower, 0f);
-		followerTalon.follow(mainTalon);
+
+	public void stop() {
+		LIntakeTalon.set(ControlMode.Velocity, 0);
+		RIntakeTalon.set(ControlMode.Velocity, 0);
+		mainLiftTalon.set(ControlMode.Velocity, 0);		
 	}
 	
 	// turns motors to takes a cube in
-	public void takeCube() {
-		LIntakeTalon.set(ControlMode.Velocity, RobotMap.CubeIntakeRPM);
-		RIntakeTalon.set(ControlMode.Velocity, RobotMap.CubeIntakeRPM);
-		LLiftTalon.set(ControlMode.Velocity, 0);
-		RLiftTalon.set(ControlMode.Velocity, 0);
+	public void grabCube() {
+		LIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput);
+		RIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput);
+
 	}
 		
 	// turns motors to releases a cube
 	public void releaseCube() {
-		LIntakeTalon.set(ControlMode.Velocity, RobotMap.CubeIntakeRPM * (-1));
-		RIntakeTalon.set(ControlMode.Velocity, RobotMap.CubeIntakeRPM * (-1));
-		LLiftTalon.set(ControlMode.Velocity, 0);
-		RLiftTalon.set(ControlMode.Velocity, 0);
-	}
-		
-	// stops motors
-	public void holdCube() {
-		LIntakeTalon.set(ControlMode.Velocity, 0);
-		RIntakeTalon.set(ControlMode.Velocity, 0);
-		LLiftTalon.set(ControlMode.Velocity, 0);
-		RLiftTalon.set(ControlMode.Velocity, 0);
+		LIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput * -1);
+		RIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput * -1);
+
 	}
 	
 	// turns motors to lift the cube
 	public void liftCube() {
 		LIntakeTalon.set(ControlMode.Velocity, 0);
 		RIntakeTalon.set(ControlMode.Velocity, 0);
-		LLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM);
-		RLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM);
+		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM);
 	}
 
 	// turns motors to drop the cube
-	public void dropCube() {
+	public void lowerCube() {
 		LIntakeTalon.set(ControlMode.Velocity, 0);
 		RIntakeTalon.set(ControlMode.Velocity, 0);
-		LLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * (-1));
-		RLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * (-1));
+		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * (-1));
 	}
 }
