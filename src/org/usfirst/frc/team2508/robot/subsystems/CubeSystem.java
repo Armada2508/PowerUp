@@ -66,15 +66,11 @@ public class CubeSystem extends Subsystem {
 	
 	// turns motors to lift the cube
 	public void liftCube() {
-		LIntakeTalon.set(ControlMode.Velocity, 0);
-		RIntakeTalon.set(ControlMode.Velocity, 0);
 		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM);
 	}
 
 	// turns motors to drop the cube
 	public void lowerCube() {
-		LIntakeTalon.set(ControlMode.Velocity, 0);
-		RIntakeTalon.set(ControlMode.Velocity, 0);
-		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * (-1));
+		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * -1);
 	}
 }
