@@ -50,13 +50,16 @@ public class DriveRobot extends Command {
     // runs constantly
     protected void execute() {
     	
-		double RCalc1, LCalc1;
-		RCalc1 = Robot.oi.stick.getRawAxis(1);
-		LCalc1 = Robot.oi.stick.getRawAxis(1);
-		RCalc1 -= Robot.oi.stick.getRawAxis(4);
-		LCalc1 += Robot.oi.stick.getRawAxis(4);
+		double RCalc, LCalc;
+		RCalc = Robot.oi.stick.getRawAxis(1);
+		LCalc = Robot.oi.stick.getRawAxis(1);
+		RCalc -= Robot.oi.stick.getRawAxis(4);
+		LCalc += Robot.oi.stick.getRawAxis(4);
+		
+		RCalc = Math.max(-1, Math.min(1, RCalc));
+		LCalc = Math.max(-1, Math.min(1, LCalc));
 
-		Pair pair = doTimeRamp(20, new Pair(LCalc1,RCalc1));
+		Pair pair = doTimeRamp(20, new Pair(LCalc,RCalc));
 		
 		Robot.DriveSystem.drive(-(pair.left),-(pair.right));    	
     }

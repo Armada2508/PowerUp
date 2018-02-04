@@ -28,8 +28,8 @@ public class DriveSystem extends Subsystem {
 		
 		
 		// configures talons as main talons and other talons as followers
-		TalonHelper.initTalonSet(mainRightTalon, followerRightTalon, 0);
-		TalonHelper.initTalonSet(mainLeftTalon, followerLeftTalon, 0);
+		TalonHelper.initTalonSet(mainRightTalon, followerRightTalon, RobotMap.DriveSystemConfig);
+		TalonHelper.initTalonSet(mainLeftTalon, followerLeftTalon, RobotMap.DriveSystemConfig);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		mainRightTalon.setInverted(false);
@@ -61,7 +61,7 @@ public class DriveSystem extends Subsystem {
 		}
 		
 		else {
-			output = input * RobotMap.MaxDriveRPM;
+			output = input * RobotMap.DriveSystemConfig.MaxRPM;
 		}
 		return output;
 	}

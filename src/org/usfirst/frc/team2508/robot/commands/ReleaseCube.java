@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ReleaseCube extends Command {
 
     public ReleaseCube() {
-    	requires(Robot.CubeSystem);
+    	requires(Robot.CubeIntakeSystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.CubeSystem.releaseCube();
+    	Robot.CubeIntakeSystem.releaseCube();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,12 +29,12 @@ public class ReleaseCube extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.CubeSystem.stop();
+    	Robot.CubeIntakeSystem.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.CubeSystem.stop();
+    	Robot.CubeIntakeSystem.stop();
     }
 }

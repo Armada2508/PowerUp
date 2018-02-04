@@ -8,34 +8,22 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class CubeSystem extends Subsystem {
+public class CubeIntakeSystem extends Subsystem {
 	
 	// declare talons
-	public TalonSRX LIntakeTalon;
-	public TalonSRX RIntakeTalon;
-	public TalonSRX mainLiftTalon;
-	public TalonSRX followerLiftTalon;
+	private TalonSRX LIntakeTalon;
+	private TalonSRX RIntakeTalon;
 
 	// constructor
-	public CubeSystem(){
+	public CubeIntakeSystem(){
 		
 		// map talons
 		LIntakeTalon = new TalonSRX(1);
 		RIntakeTalon = new TalonSRX(2);
-		mainLiftTalon = new TalonSRX(5);
-		followerLiftTalon = new TalonSRX(6);
-		
-		// configures LLiftTalon as main talon and RLiftTalon as follower
-		TalonHelper.initTalonSet(mainLiftTalon, followerLiftTalon, 0);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		LIntakeTalon.setInverted(false);
-		RIntakeTalon.setInverted(false);
-		
-		mainLiftTalon.setInverted(true);
-		followerLiftTalon.setInverted(true);
-		mainLiftTalon.setSensorPhase(true);
-		
+		RIntakeTalon.setInverted(false);		
 	}
 	
 	@Override
@@ -46,8 +34,7 @@ public class CubeSystem extends Subsystem {
 
 	public void stop() {
 		LIntakeTalon.set(ControlMode.Velocity, 0);
-		RIntakeTalon.set(ControlMode.Velocity, 0);
-		mainLiftTalon.set(ControlMode.Velocity, 0);		
+		RIntakeTalon.set(ControlMode.Velocity, 0);	
 	}
 	
 	// turns motors to takes a cube in
@@ -62,15 +49,5 @@ public class CubeSystem extends Subsystem {
 		LIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput * -1);
 		RIntakeTalon.set(ControlMode.PercentOutput, RobotMap.CubeIntakePercentOutput * -1);
 
-	}
-	
-	// turns motors to lift the cube
-	public void liftCube() {
-		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM);
-	}
-
-	// turns motors to drop the cube
-	public void lowerCube() {
-		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftRPM * -1);
 	}
 }

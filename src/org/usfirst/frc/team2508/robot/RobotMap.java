@@ -6,25 +6,19 @@ package org.usfirst.frc.team2508.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
+public final class RobotMap {
 	// position robot starts in: 1 is leftmost, 2 is middle, 3 is right
 	public static final int StartPosition = 1;
 	
 	// stick must be moved this far to drive
 	public static final double DeadbandThreshold = 0.05;
-	
-	// max speed of the motors
-	public static final double MaxDriveRPM = 2500;
 
 	// Drive system/PID variables
-	public static final double DriveSystemP = 0.5*1023/4096;
-	public static final double DriveSystemI = 0.002*1023/4096;
-	public static final double DriveSystemD = 0;
-	public static final double DriveSystemF = 0;
-	public static final int DriveSystemTimeoutMs = 0;
-	
+	public static final TalonConfig DriveSystemConfig = new TalonConfig(1.0*1023/4096, 0.01*1023/4096, 0.01*1023/4096, 0, 0.1, 2500);
+	public static final TalonConfig CubeLiftSystemConfig = new TalonConfig(1.0*1023/4096, 0.01*1023/4096, 0.01*1023/4096, 0, 0.5, 750);
+			
+		
 	// speed of the cube intake/output system
 	public static final double CubeIntakePercentOutput = .4;
 	public static final double CubeSystemTime = 0.5;
-	public static final double CubeLiftRPM = 750;
 }

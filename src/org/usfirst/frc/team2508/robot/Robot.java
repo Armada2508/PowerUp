@@ -10,13 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2508.robot.RobotMap;
-import org.usfirst.frc.team2508.robot.commands.AutonomousStraightCommand;
-import org.usfirst.frc.team2508.robot.commands.DriveRobot;
-import org.usfirst.frc.team2508.robot.commands.AutoCodeStation1;
-import org.usfirst.frc.team2508.robot.commands.AutoCodeStation2;
-import org.usfirst.frc.team2508.robot.commands.AutoCodeStation3;
-import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
-import org.usfirst.frc.team2508.robot.subsystems.CubeSystem;
+import org.usfirst.frc.team2508.robot.commands.*;
+import org.usfirst.frc.team2508.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +22,8 @@ import org.usfirst.frc.team2508.robot.subsystems.CubeSystem;
  */
 public class Robot extends IterativeRobot {
 	public static final DriveSystem DriveSystem = new DriveSystem();
-	public static final CubeSystem CubeSystem = new CubeSystem();
+	public static final CubeIntakeSystem CubeIntakeSystem = new CubeIntakeSystem();
+	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
 
 	Command autonomousCommand;
