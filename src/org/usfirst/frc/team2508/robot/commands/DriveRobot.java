@@ -6,6 +6,7 @@ package org.usfirst.frc.team2508.robot.commands;
 
 import org.usfirst.frc.team2508.robot.Pair;
 import org.usfirst.frc.team2508.robot.Robot;
+import org.usfirst.frc.team2508.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -28,13 +29,12 @@ public class DriveRobot extends Command {
 
     
     Pair rampPairThing = new Pair(0,0);
-    final double slewRate = 0.1;
 
     // Called repeatedly when this Command is scheduled to run
 	
     private Pair doTimeRamp(long millisPerTick, Pair pair)
     {
-        double posSlewLimit = slewRate*1000/millisPerTick;
+        double posSlewLimit = RobotMap.DriveSystemMaxSlewRate*1000/millisPerTick;
         double negSlewLimit = -posSlewLimit;
 		double leftDiff = pair.left - rampPairThing.left;
         double rightDiff = pair.right - rampPairThing.right;
@@ -53,8 +53,8 @@ public class DriveRobot extends Command {
 		double RCalc, LCalc;
 		RCalc = Robot.oi.stick.getRawAxis(1);
 		LCalc = Robot.oi.stick.getRawAxis(1);
-		RCalc -= Robot.oi.stick.getRawAxis(4);
-		LCalc += Robot.oi.stick.getRawAxis(4);
+		RCalc += Robot.oi.stick.getRawAxis(4);
+		LCalc -= Robot.oi.stick.getRawAxis(4);
 		
 		RCalc = Math.max(-1, Math.min(1, RCalc));
 		LCalc = Math.max(-1, Math.min(1, LCalc));

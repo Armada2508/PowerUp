@@ -39,10 +39,12 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 
 	public OI() {
-		y.whileHeld(new LiftCube());
-		a.whileHeld(new LowerCube());
-		x.whileHeld(new GrabCube());
-		b.whileHeld(new ReleaseCube());
+		y.whenPressed(new MoveCube(RobotMap.SwitchPlacePosition));
+		b.whenPressed(new MoveCube(RobotMap.ShootRecievePosition));
+		a.whenPressed(new MoveCube(RobotMap.LowerPosition));
+		x.whileHeld(new LiftCubeSlowly());
+		rb.whileHeld(new GrabCube());
+		lb.whileHeld(new ReleaseCube());
 	}
 		
 	// controller on port 0
@@ -54,7 +56,7 @@ public class OI {
 	public Button x = new JoystickButton(stick, 3);
 	public Button y = new JoystickButton(stick, 4);
 	public Button lb = new JoystickButton(stick, 5);
-	Button rb = new JoystickButton(stick, 6);
+	public Button rb = new JoystickButton(stick, 6);
 	public Button back = new JoystickButton(stick, 7);
 	public Button start = new JoystickButton(stick, 8);
 	Button l3 = new JoystickButton(stick, 9);

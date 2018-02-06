@@ -43,10 +43,18 @@ public class CubeLiftSystem extends Subsystem {
 	// turns motors to lift the cube
 	public void liftCube() {		
 		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftSystemConfig.MaxRPM);
+	}	
+	
+	public void liftCubeSlowly() {		
+		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftSystemConfig.MaxRPM * 0.5);
 	}
 
 	// turns motors to drop the cube
 	public void lowerCube() {
 		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftSystemConfig.MaxRPM * -1);
+	}
+	
+	public void moveCube(double position) {		
+		mainLiftTalon.set(ControlMode.Position, position);
 	}
 }

@@ -16,8 +16,8 @@ public final class TalonHelper {
 		mainTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, pidIdx, driveSystemTimeoutMs);
 		mainTalon.configNominalOutputForward(0f, driveSystemTimeoutMs);
 		mainTalon.configNominalOutputReverse(0f, driveSystemTimeoutMs);
-		mainTalon.configPeakOutputForward(+12.0f, driveSystemTimeoutMs);
-		mainTalon.configPeakOutputReverse(-12.0f, driveSystemTimeoutMs);
+		mainTalon.configPeakOutputForward(talonConfig.MaxVoltage, driveSystemTimeoutMs);
+		mainTalon.configPeakOutputReverse(-talonConfig.MaxVoltage, driveSystemTimeoutMs);
 		mainTalon.set(ControlMode.Velocity, 0f);
 		
 		mainTalon.config_kP(0, talonConfig.P, driveSystemTimeoutMs);
