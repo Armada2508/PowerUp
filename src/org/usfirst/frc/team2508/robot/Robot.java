@@ -28,6 +28,10 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	public double groundCubeHeight;
+	public double driverCubeHeight;
+	public double switchCubeHeight;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -40,6 +44,10 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Middle Drive Station", new AutoCodeStation2());
 		chooser.addObject("Right Drive Station", new AutoCodeStation3());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
+		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
+		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 	}
 
 	/**
@@ -84,6 +92,10 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.start();
 		
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
+		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
+		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 	}
 
 	/**
@@ -106,6 +118,10 @@ public class Robot extends IterativeRobot {
 		// starts a DriveRobot instance, handles driving in teleop
 		Command driveRobotCMD = new DriveRobot();
 		driveRobotCMD.start();
+		
+		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
+		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
+		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 	}
 
 	/**

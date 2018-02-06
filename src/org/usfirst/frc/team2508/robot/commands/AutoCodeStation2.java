@@ -19,6 +19,7 @@ public class AutoCodeStation2 extends Command {
 			// forward 80.342"
 			// turn 75.953 degrees CW
 			// forward 42"
+			// release cube
 		}
 		else
 		{
@@ -27,6 +28,7 @@ public class AutoCodeStation2 extends Command {
 			// forward 35.730"
 			// turn 56.924 degrees CCW
 			// forward 42"
+			// release cube
 		}
 	}
 
