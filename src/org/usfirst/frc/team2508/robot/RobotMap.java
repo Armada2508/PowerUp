@@ -13,8 +13,8 @@ public final class RobotMap {
 	public static final double DriveSystemMaxSlewRate = 0.1*1023/4096;
 
 	// Drive system/PID variables
-	public static final TalonConfig DriveSystemConfig = new TalonConfig(1.0*1023/4096, 0.01*1023/4096, 0.01*1023/4096, 0, 0.1, 2500, 12);
-	public static final TalonConfig CubeLiftSystemConfig = new TalonConfig(1.0*1023/4096, 0.00*1023/4096, 0.0*1023/4096, 0, 0.5, 750, 8);
+	public static final TalonConfig DriveSystemConfig = new TalonConfig(1.0*1023/4096, 0.01*1023/4096, 0.01*1023/4096, 0, 0.1, 2500, 40);
+	public static final TalonConfig CubeLiftSystemConfig = new TalonConfig(1.0*1023/4096, 0.01*1023/4096, 0.01*1023/4096, 0, 0.5, 300, 4);
 
 	public static final double SwitchPlacePosition = 9000;
 	public static final double ShootRecievePosition = 8000;
