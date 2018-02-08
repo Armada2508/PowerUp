@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team2508.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -48,6 +51,17 @@ public class Robot extends IterativeRobot {
 		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
 		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
 		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
+		
+			UsbCamera camera1 = new UsbCamera("frontCamera", 0);
+	        camera1.setResolution(640, 480);
+	        camera1.setFPS(10);
+	        CameraServer.getInstance().startAutomaticCapture(camera1);
+		
+		
+		    UsbCamera camera2 = new UsbCamera("backCamera", 0);
+	        camera2.setResolution(640, 480);
+	        camera2.setFPS(10);
+	        CameraServer.getInstance().startAutomaticCapture(camera2);
 	}
 
 	/**
