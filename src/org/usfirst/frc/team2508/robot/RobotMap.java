@@ -23,4 +23,11 @@ public final class RobotMap {
 	// speed of the cube intake/output system
 	public static final double CubeIntakePercentOutput = 1.0;
 	public static final double CubeSystemTime = 0.5;
+	
+	class camera { 		
+		public final static int width = 144;
+	 	public final static int height = 100;
+	    public final static int fps = 30;
+	 }
+	
 }
