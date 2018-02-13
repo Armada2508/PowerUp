@@ -1,8 +1,6 @@
 
 package org.usfirst.frc.team2508.robot;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -15,6 +13,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2508.robot.RobotMap;
 import org.usfirst.frc.team2508.robot.commands.*;
 import org.usfirst.frc.team2508.robot.subsystems.*;
+
+import org.usfirst.frc.team2508.robot.Camera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
 	public double driverCubeHeight;
 	public double switchCubeHeight;
 
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -52,16 +53,7 @@ public class Robot extends IterativeRobot {
 		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
 		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 		
-			UsbCamera camera1 = new UsbCamera("frontCamera", 0);
-	        camera1.setResolution(640, 480);
-	        camera1.setFPS(10);
-	        CameraServer.getInstance().startAutomaticCapture(camera1);
-		
-		
-		    UsbCamera camera2 = new UsbCamera("backCamera", 0);
-	        camera2.setResolution(640, 480);
-	        camera2.setFPS(10);
-	        CameraServer.getInstance().startAutomaticCapture(camera2);
+		Camera.startStream();
 	}
 
 	/**

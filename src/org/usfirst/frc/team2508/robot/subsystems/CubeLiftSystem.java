@@ -37,12 +37,15 @@ public class CubeLiftSystem extends Subsystem {
 	
 
 	public void stop() {
-		mainLiftTalon.set(ControlMode.Velocity, 0);		
+		mainLiftTalon.set(ControlMode.Velocity, 0);
+//		followerLiftTalon.set(ControlMode.PercentOutput, 0);
 	}
 	
 	// turns motors to lift the cube
 	public void liftCube() {		
 		mainLiftTalon.set(ControlMode.Velocity, RobotMap.CubeLiftSystemConfig.MaxRPM);
+//		mainLiftTalon.set(ControlMode.PercentOutput, .4);
+//		followerLiftTalon.set(ControlMode.PercentOutput, .4);
 	}	
 	
 	public void liftCubeSlowly() {		

@@ -1,14 +1,15 @@
 package org.usfirst.frc.team2508.robot;
 
 public class TalonConfig {
-	public TalonConfig(double p,double i,double d,double f,double ramp, double rpm, int peakOutput){
+	public TalonConfig(double p,double i,double d,double f,double ramp, double rpm, int peakVoltage, int peakCurrent){
 		P = p;
 		I = i;
 		D = d;
 		F = f;
 		Ramp = ramp;
 		MaxRPM = rpm;
-		PeakOutput = peakOutput;
+		PeakVoltage = peakVoltage;
+		PeakCurrent = peakCurrent;
 	}
 	
 	public final double Ramp;
@@ -17,5 +18,6 @@ public class TalonConfig {
 	public final double I;
 	public final double D;
 	public final double F;
-	public final int PeakOutput;
+	public final double PeakVoltage;
+	public final int PeakCurrent;
 }
