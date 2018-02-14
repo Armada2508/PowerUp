@@ -14,8 +14,6 @@ public class MotionMagicTest extends Command {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
 		requires(Robot.DriveSystem);
-		requires(Robot.CubeIntakeSystem);
-		requires(Robot.CubeLiftSystem);
 	}
 	
 	protected void initialize() {

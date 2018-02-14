@@ -40,10 +40,10 @@ public class DriveSystem extends Subsystem {
 		followerLeftTalon.setInverted(false);
 		mainLeftTalon.setSensorPhase(true);
 		
-		mainLeftTalon.configMotionCruiseVelocity(0, 20);
-		mainLeftTalon.configMotionAcceleration(0, 20);
-		mainRightTalon.configMotionCruiseVelocity(0, 20);
-		mainRightTalon.configMotionAcceleration(0, 20);
+		mainLeftTalon.configMotionCruiseVelocity(15000, 20);
+		mainLeftTalon.configMotionAcceleration(6000, 20);
+		mainRightTalon.configMotionCruiseVelocity(15000, 20);
+		mainRightTalon.configMotionAcceleration(6000, 20);
 	}
 	
 	@Override
