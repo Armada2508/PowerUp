@@ -3,7 +3,6 @@ package org.usfirst.frc.team2508.robot.subsystems;
 import org.usfirst.frc.team2508.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;

@@ -1,8 +1,6 @@
 package org.usfirst.frc.team2508.robot.commands;
 
 import org.usfirst.frc.team2508.robot.Robot;
-import org.usfirst.frc.team2508.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,7 +15,7 @@ public class MotionMagicTest extends Command {
 	}
 	
 	protected void initialize() {
-		Robot.DriveSystem.driveMotionMagic(1, 1);
+		Robot.DriveSystem.driveMotionMagic(4096, 4096);
 	}
 
 	@Override
