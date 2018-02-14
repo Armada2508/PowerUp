@@ -24,6 +24,10 @@ public final class RobotMap {
 	public static final double CubeIntakePercentOutput = 1.0;
 	public static final double CubeSystemTime = 0.5;
 	
+	// acceleration/velocity for motionmagic
+	public static final int MMAcceleration = 1500;
+	public static final int MMCruiseVelocity = 600;
+	
 	class camera { 		
 		public final static int width = 144;
 	 	public final static int height = 100;
