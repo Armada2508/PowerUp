@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Left Drive Station", new AutoCodeStation1());
 		chooser.addObject("Middle Drive Station", new AutoCodeStation2());
 		chooser.addObject("Right Drive Station", new AutoCodeStation3());
+		chooser.addObject("Test motionmagic", new MotionMagicTest());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
