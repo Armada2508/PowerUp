@@ -52,6 +52,13 @@ public class DriveSystem extends Subsystem {
 		mainLeftTalon.set(ControlMode.Velocity, processDeadband(powerL));
 	}
 	
+	// takes an L and R position and uses the talons in MotionMagic to drive there
+	public void driveMotionMagic(double distanceL, double distanceR)
+	{
+		mainRightTalon.set(ControlMode.MotionMagic, distanceR);
+		mainLeftTalon.set(ControlMode.MotionMagic, distanceL);
+	}
+	
 	// gives a deadzone for the input, so robot won't react to small movements
 	private double processDeadband(double input){
 		double output;
