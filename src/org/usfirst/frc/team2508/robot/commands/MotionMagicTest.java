@@ -15,7 +15,7 @@ public class MotionMagicTest extends Command {
 	}
 	
 	protected void initialize() {
-		Robot.DriveSystem.driveMotionMagic(4096, 4096);
+		Robot.DriveSystem.driveMotionMagic(100, 100);
 	}
 
 	@Override

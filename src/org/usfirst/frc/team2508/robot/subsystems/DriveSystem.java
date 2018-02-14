@@ -59,8 +59,8 @@ public class DriveSystem extends Subsystem {
 	// takes an L and R position and uses the talons in MotionMagic to drive there
 	public void driveMotionMagic(double distanceL, double distanceR)
 	{
-		mainRightTalon.set(ControlMode.MotionMagic, distanceR);
-		mainLeftTalon.set(ControlMode.MotionMagic, distanceL);
+		mainRightTalon.set(ControlMode.MotionMagic, -(distanceR));
+		mainLeftTalon.set(ControlMode.MotionMagic, -(distanceL));
 	}
 	
 	// gives a deadzone for the input, so robot won't react to small movements
