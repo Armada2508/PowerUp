@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
 	
-	public static String switchPositions = "LRL";
+	public static String switchPositions = "RRR";
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();

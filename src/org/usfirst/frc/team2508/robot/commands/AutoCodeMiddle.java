@@ -25,25 +25,23 @@ public class AutoCodeMiddle extends CommandGroup {
 			// release cube
 			addSequential(new ReleaseCube());
 		}
-		/*if(Robot.switchPositions.charAt(0) == 'R')
-			//NOT DONE MEASUREMENTS ARE NOT THE SAME
+		if(Robot.switchPositions.charAt(0) == 'R')
 		{
 			// forward 36"
 			addSequential(new DriveMotionMagic(36, 36));
 			// turn 74.3 degrees CCW
-			addSequential(new DriveMotionMagic(0, 26.9));
+			addSequential(new DriveMotionMagic(19.5, 0));
 			// forward 80.342"
-			addSequential(new DriveMotionMagic(81.3, 81.3));
+			addSequential(new DriveMotionMagic(37.4, 37.4));
 			// turn 74.3 degrees CW
-			addSequential(new DriveMotionMagic(26.4, 0));
+			addSequential(new DriveMotionMagic(0, 19.5));
 			// forward 42"
 			addSequential(new DriveMotionMagic(42, 42));
 			// lift cube
 			//addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 			// release cube
 			addSequential(new ReleaseCube());
-			addSequential(new WaitCommand(1));
 		
-		}*/
+		}
 	}
 }
