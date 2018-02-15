@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2508.robot;
 
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -26,6 +27,8 @@ public class Robot extends IterativeRobot {
 	public static final CubeIntakeSystem CubeIntakeSystem = new CubeIntakeSystem();
 	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
+	
+	public static String switchPositions = "LRL";
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -43,9 +46,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Left Drive Station", new AutoCodeStation1());
-		chooser.addObject("Middle Drive Station", new AutoCodeStation2());
+		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
 		chooser.addObject("Right Drive Station", new AutoCodeStation3());
-		chooser.addObject("Test motionmagic", new MotionMagicTest());
+		chooser.addObject("Test motionmagic", new MotionMagic());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
@@ -67,7 +70,10 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+		
 		Scheduler.getInstance().run();
+		
 	}
 
 	/**

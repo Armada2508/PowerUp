@@ -39,10 +39,10 @@ public class DriveSystem extends Subsystem {
 		followerLeftTalon.setInverted(false);
 		mainLeftTalon.setSensorPhase(true);
 		
-		mainLeftTalon.configMotionCruiseVelocity(RobotMap.MMCruiseVelocity, 20);
-		mainLeftTalon.configMotionAcceleration(RobotMap.MMAcceleration, 20);
-		mainRightTalon.configMotionCruiseVelocity(RobotMap.MMCruiseVelocity, 20);
-		mainRightTalon.configMotionAcceleration(RobotMap.MMAcceleration, 20);
+		mainLeftTalon.configMotionCruiseVelocity(RobotMap.MMCruiseVelocity, 0);
+		mainLeftTalon.configMotionAcceleration(RobotMap.MMAcceleration, 0);
+		mainRightTalon.configMotionCruiseVelocity(RobotMap.MMCruiseVelocity, 0);
+		mainRightTalon.configMotionAcceleration(RobotMap.MMAcceleration, 0);
 	}
 	
 	@Override
@@ -58,9 +58,19 @@ public class DriveSystem extends Subsystem {
 	
 	// takes an L and R position and uses the talons in MotionMagic to drive there
 	public void driveMotionMagic(double distanceL, double distanceR)
+	{	
+		mainRightTalon.set(ControlMode.MotionMagic, distanceR);
+		mainLeftTalon.set(ControlMode.MotionMagic, distanceL);
+	}
+	
+	public int getLeftPosition()
 	{
-		mainRightTalon.set(ControlMode.MotionMagic, -(distanceR));
-		mainLeftTalon.set(ControlMode.MotionMagic, -(distanceL));
+		return mainLeftTalon.getSelectedSensorPosition(0);
+	}
+	
+	public int getRightPosition()
+	{
+		return mainRightTalon.getSelectedSensorPosition(0);
 	}
 	
 	// gives a deadzone for the input, so robot won't react to small movements

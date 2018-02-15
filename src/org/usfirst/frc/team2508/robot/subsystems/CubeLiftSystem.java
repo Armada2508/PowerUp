@@ -22,6 +22,7 @@ public class CubeLiftSystem extends Subsystem {
 		
 		// configures LLiftTalon as main talon and RLiftTalon as follower
 		TalonHelper.initTalonSet(mainLiftTalon, followerLiftTalon, RobotMap.CubeLiftSystemConfig);
+		mainLiftTalon.configForwardSoftLimitThreshold(RobotMap.LiftTopLimit, 10);
 		
 		mainLiftTalon.setInverted(true);
 		followerLiftTalon.setInverted(true);
