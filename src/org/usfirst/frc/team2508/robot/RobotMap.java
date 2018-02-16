@@ -32,7 +32,7 @@ public final class RobotMap {
 	// acceleration/velocity for motionmagic
 	public static final int MMAcceleration = 1500;
 	public static final int MMCruiseVelocity = 600;
-	public static final int MMTolerance = 200;
+	public static final int MMTolerance = 500;
 
 	class camera {
 		public final static int width = 144;

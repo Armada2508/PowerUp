@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCodeMiddle extends CommandGroup {
 	public AutoCodeMiddle()
 	{
+		System.out.println("Middle");
 		if(Robot.switchPositions.charAt(0) == 'L')
 		{
 			// forward 36"
@@ -25,12 +26,14 @@ public class AutoCodeMiddle extends CommandGroup {
 			// release cube
 			addSequential(new ReleaseCube());
 		}
-		if(Robot.switchPositions.charAt(0) == 'R')
+		if(/*Robot.switchPositions.charAt(0) == 'R'*/ true)
 		{
 			// forward 36"
 			addSequential(new DriveMotionMagic(36, 36));
+			System.out.println("forward");
 			// turn 74.3 degrees CCW
 			addSequential(new DriveMotionMagic(19.5, 0));
+			System.out.println("turn");
 			// forward 80.342"
 			addSequential(new DriveMotionMagic(37.4, 37.4));
 			// turn 74.3 degrees CW

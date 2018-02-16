@@ -60,4 +60,8 @@ public class CubeLiftSystem extends Subsystem {
 	public void moveCube(double position) {		
 		mainLiftTalon.set(ControlMode.Position, position);
 	}
+	
+	public int getPosition() {
+		return mainLiftTalon.getSelectedSensorPosition(0);
+	}
 }
