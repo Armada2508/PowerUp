@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2508.robot.commands;
 
-import org.usfirst.frc.team2508.robot.Robot;
 import org.usfirst.frc.team2508.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -9,7 +8,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class AutoCodeStation1 extends CommandGroup {
 	public AutoCodeStation1()
 	{
-		if(Robot.switchPositions.charAt(0) == 'L')
+		if(RobotMap.switchPositions.charAt(0) == 'L')
 		{
 			// forward 32
 			addSequential(new DriveMotionMagic(32, 32));
@@ -30,7 +29,7 @@ public class AutoCodeStation1 extends CommandGroup {
 			// release cube
 			addSequential(new ReleaseCube());
 		}
-		if(Robot.switchPositions.charAt(0) == 'R')
+		if(RobotMap.switchPositions.charAt(0) == 'R')
 		{
 			// forward 32
 			addSequential(new DriveMotionMagic(32, 32));

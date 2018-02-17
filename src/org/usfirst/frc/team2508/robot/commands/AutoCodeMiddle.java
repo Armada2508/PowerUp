@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2508.robot.commands;
 
-import org.usfirst.frc.team2508.robot.Robot;
 import org.usfirst.frc.team2508.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -9,7 +8,7 @@ public class AutoCodeMiddle extends CommandGroup {
 	public AutoCodeMiddle()
 	{
 		System.out.println("Middle");
-		if(Robot.switchPositions.charAt(0) == 'L')
+		if(RobotMap.switchPositions.charAt(0) == 'L')
 		{
 			// forward 36"
 			addSequential(new DriveMotionMagic(36, 36));
@@ -22,11 +21,11 @@ public class AutoCodeMiddle extends CommandGroup {
 			// forward 42"
 			addSequential(new DriveMotionMagic(42, 42));
 			// lift cube
-			//addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
+			addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 			// release cube
 			addSequential(new ReleaseCube());
 		}
-		if(/*Robot.switchPositions.charAt(0) == 'R'*/ true)
+		if(RobotMap.switchPositions.charAt(0) == 'R')
 		{
 			// forward 36"
 			addSequential(new DriveMotionMagic(36, 36));
@@ -41,7 +40,7 @@ public class AutoCodeMiddle extends CommandGroup {
 			// forward 42"
 			addSequential(new DriveMotionMagic(42, 42));
 			// lift cube
-			//addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
+			addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 			// release cube
 			addSequential(new ReleaseCube());
 		

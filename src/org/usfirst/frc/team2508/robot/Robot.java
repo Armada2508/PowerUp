@@ -28,14 +28,9 @@ public class Robot extends IterativeRobot {
 	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
 	
-	public static String switchPositions = "RRR";
-
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
-	public double groundCubeHeight;
-	public double driverCubeHeight;
-	public double switchCubeHeight;
 
 
 	/**
@@ -48,12 +43,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Left Drive Station", new AutoCodeStation1());
 		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
 		chooser.addObject("Right Drive Station", new AutoCodeStation3());
-		chooser.addObject("Test motionmagic", new MotionMagic());
 		SmartDashboard.putData("Auto mode", chooser);
-		
-		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
-		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
-		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 		
 		Camera.startStream();
 	}
@@ -70,7 +60,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+		RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
 		
 		Scheduler.getInstance().run();
 		
@@ -100,13 +90,11 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
+		{
 			autonomousCommand.start();
+		}
 		
 		SmartDashboard.putData("Auto mode", chooser);
-		
-		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
-		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
-		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 	}
 
 	/**
@@ -129,10 +117,6 @@ public class Robot extends IterativeRobot {
 		// starts a DriveRobot instance, handles driving in teleop
 		Command driveRobotCMD = new DriveRobot();
 		driveRobotCMD.start();
-		
-		groundCubeHeight = SmartDashboard.getNumber("groundCubeHeight", 0.0);
-		driverCubeHeight = SmartDashboard.getNumber("driverCubeHeight", 12.0);
-		switchCubeHeight = SmartDashboard.getNumber("switchCubeHeight", 14.0);
 	}
 
 	/**

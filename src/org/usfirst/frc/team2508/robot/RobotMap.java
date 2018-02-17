@@ -7,6 +7,8 @@ package org.usfirst.frc.team2508.robot;
  * floating around.
  */
 public final class RobotMap {
+	public static String switchPositions = "RRR";
+	
 	// stick must be moved this far to drive
 	public static final double DeadbandThreshold = 0.05;
 
