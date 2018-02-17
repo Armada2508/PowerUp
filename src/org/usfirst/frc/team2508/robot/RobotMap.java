@@ -14,7 +14,7 @@ public final class RobotMap {
 
 	// Drive system/PID variables
 	public static final TalonConfig DriveSystemConfig = new TalonConfig(1.0 * 1023 / 4096, 0.01 * 1023 / 4096,
-			0.01 * 1023 / 4096, 0, 0.1, 2500, 12, 40);
+			0.01 * 1023 / 4096, 0, 0.1, 4000, 12, 40);
 	public static final TalonConfig CubeLiftSystemConfig = new TalonConfig(1.0 * 1023 / 4096, 0.0001 * 1023 / 4096,
 			0.00 * 1023 / 4096, 0, 0.0, 2500, 6, 5);
 

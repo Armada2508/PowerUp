@@ -41,9 +41,9 @@ public class OI {
 	public OI() {
 //		y.whileHeld(new LiftCube());
 //		a.whileHeld(new LowerCube());
-//		y.whenPressed(new MoveCube(RobotMap.SwitchPlacePosition)); kris says no
-//		b.whenPressed(new MoveCube(RobotMap.ShootRecievePosition));
-//		a.whenPressed(new MoveCube(RobotMap.LowerPosition));
+		y.whenPressed(new MoveCube(RobotMap.SwitchPlacePosition)); //kris says no
+		b.whenPressed(new MoveCube(RobotMap.ShootRecievePosition));
+		a.whenPressed(new MoveCube(RobotMap.LowerPosition));
 		x.whileHeld(new LiftCubeSlowly());
 		rb.whileHeld(new GrabCube());
 		lb.whileHeld(new ReleaseCube());
