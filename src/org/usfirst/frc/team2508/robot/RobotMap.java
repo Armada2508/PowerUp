@@ -12,7 +12,7 @@ public final class RobotMap {
 	// stick must be moved this far to drive
 	public static final double DeadbandThreshold = 0.05;
 
-	public static final double DriveSystemMaxSlewRate = 0.01 * 1023 / 4096;
+	public static final double DriveSystemMaxSlewRate = 0.007 * 1023 / 4096;
 
 	// Drive system/PID variables
 	public static final TalonConfig DriveSystemConfig = new TalonConfig(1.0 * 1023 / 4096, 0.01 * 1023 / 4096,

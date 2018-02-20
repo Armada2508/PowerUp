@@ -9,12 +9,12 @@ public class Camera {
 	
     public static void startStream() {
     	
-	    UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture("topCamera", 0);
+	    UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture("bottomCamera", 0);
 	    
 	    camera1.setResolution(RobotMap.camera.width, RobotMap.camera.height);
 	    camera1.setFPS(RobotMap.camera.fps);
 	    
-	    UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture("bottomCamera", 1);
+	    UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture("topCamera", 1);
 	    
 	    camera2.setResolution(RobotMap.camera.width, RobotMap.camera.height);
 	    camera2.setFPS(RobotMap.camera.fps);

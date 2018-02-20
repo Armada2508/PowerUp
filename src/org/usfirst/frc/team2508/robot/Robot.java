@@ -30,8 +30,6 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-	
-
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -60,7 +58,13 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+		//RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+		
+//		try{
+//		     RobotMap.switchPositions = GameInfo.getGameSpecificMessage_WeekZero(); //The string will be stored in "gameData."
+//		  }catch (Exception error) {
+//		      System.out.println(error); //If error found, print the error without crashing entire robot code
+//		  }
 		
 		Scheduler.getInstance().run();
 		

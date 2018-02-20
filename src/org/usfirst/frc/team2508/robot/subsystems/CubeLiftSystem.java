@@ -3,6 +3,9 @@ package org.usfirst.frc.team2508.robot.subsystems;
 import org.usfirst.frc.team2508.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.RemoteLimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,6 +26,11 @@ public class CubeLiftSystem extends Subsystem {
 		// configures LLiftTalon as main talon and RLiftTalon as follower
 		TalonHelper.initTalonSet(mainLiftTalon, followerLiftTalon, RobotMap.CubeLiftSystemConfig);
 		mainLiftTalon.configForwardSoftLimitThreshold(RobotMap.LiftTopLimit, 10);
+		mainLiftTalon.configMaxIntegralAccumulator(0, 200, 10);
+		
+
+		mainLiftTalon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, 10);
+		mainLiftTalon.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, 10);
 		
 		mainLiftTalon.setInverted(true);
 		followerLiftTalon.setInverted(true);

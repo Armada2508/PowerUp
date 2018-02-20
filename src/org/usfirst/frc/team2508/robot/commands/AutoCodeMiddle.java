@@ -29,10 +29,8 @@ public class AutoCodeMiddle extends CommandGroup {
 		{
 			// forward 36"
 			addSequential(new DriveMotionMagic(36, 36));
-			System.out.println("forward");
 			// turn 74.3 degrees CCW
 			addSequential(new DriveMotionMagic(19.5, 0));
-			System.out.println("turn");
 			// forward 80.342"
 			addSequential(new DriveMotionMagic(37.4, 37.4));
 			// turn 74.3 degrees CW

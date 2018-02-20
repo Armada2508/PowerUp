@@ -19,7 +19,7 @@ public class AutoCodeStation3 extends CommandGroup {
 			addSequential(new DriveMotionMagic(0, 39));
 			// forward 140
 			addSequential(new DriveMotionMagic(140, 140));
-			// turn 90 CCW
+			/*// turn 90 CCW
 			addSequential(new DriveMotionMagic(0, 39));
 			// forward 181.1
 			addSequential(new DriveMotionMagic(181.1, 181.1));
@@ -31,6 +31,7 @@ public class AutoCodeStation3 extends CommandGroup {
 			addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 			// release cube
 			addSequential(new ReleaseCube());
+			*/
 		}
 		if(RobotMap.switchPositions.charAt(0) == 'R')
 		{

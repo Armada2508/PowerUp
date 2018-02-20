@@ -42,7 +42,7 @@ public class AutoCodeStation1 extends CommandGroup {
 			// forward 140
 			addSequential(new DriveMotionMagic(140, 140));
 			// turn 90 CW
-			addSequential(new DriveMotionMagic(39, 0));
+			/*addSequential(new DriveMotionMagic(39, 0));
 			// forward 181.1
 			addSequential(new DriveMotionMagic(181.1, 181.1));
 			// turn 90 CW
@@ -58,7 +58,7 @@ public class AutoCodeStation1 extends CommandGroup {
 			// stop releasing cube
 			addSequential(new StopCube());
 			// lower grip
-			addSequential(new MoveCube(RobotMap.LowerPosition));
+			addSequential(new MoveCube(RobotMap.LowerPosition));*/
 		}
 	}
 }

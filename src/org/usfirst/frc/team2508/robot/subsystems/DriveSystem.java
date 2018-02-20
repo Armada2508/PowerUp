@@ -29,6 +29,8 @@ public class DriveSystem extends Subsystem {
 		// configures talons as main talons and other talons as followers
 		TalonHelper.initTalonSet(mainRightTalon, followerRightTalon, RobotMap.DriveSystemConfig);
 		TalonHelper.initTalonSet(mainLeftTalon, followerLeftTalon, RobotMap.DriveSystemConfig);
+		//mainLeftTalon.configMaxIntegralAccumulator(0, 2000, 10);
+		//mainRightTalon.configMaxIntegralAccumulator(0, 2000, 10);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
 		mainRightTalon.setInverted(false);

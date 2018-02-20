@@ -24,7 +24,6 @@ public final class TalonHelper {
 		mainTalon.enableCurrentLimit(true); 
 		mainTalon.set(ControlMode.Velocity, 0f);
 		mainTalon.config_IntegralZone(0, 1000, 10);
-		mainTalon.configMaxIntegralAccumulator(0, 200, 10);
 		
 		mainTalon.config_kP(0, talonConfig.P, driveSystemTimeoutMs);
 		mainTalon.config_kI(0, talonConfig.I, driveSystemTimeoutMs); 
