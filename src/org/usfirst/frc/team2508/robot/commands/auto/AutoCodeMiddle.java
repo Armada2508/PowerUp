@@ -1,6 +1,8 @@
-package org.usfirst.frc.team2508.robot.commands;
+package org.usfirst.frc.team2508.robot.commands.auto;
 
 import org.usfirst.frc.team2508.robot.RobotMap;
+import org.usfirst.frc.team2508.robot.commands.cube.MoveCube;
+import org.usfirst.frc.team2508.robot.commands.cube.ReleaseCube;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

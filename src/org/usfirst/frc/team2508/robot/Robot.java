@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2508.robot.commands.*;
+import org.usfirst.frc.team2508.robot.commands.auto.*;
 import org.usfirst.frc.team2508.robot.subsystems.*;
 
 import org.usfirst.frc.team2508.robot.Camera;
@@ -38,9 +39,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Left Drive Station", new AutoCodeStation1());
+		chooser.addDefault("Left Drive Station", new AutoCodeLeft());
 		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
-		chooser.addObject("Right Drive Station", new AutoCodeStation3());
+		chooser.addObject("Right Drive Station", new AutoCodeRight());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		Camera.startStream();
@@ -58,13 +59,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		//RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
-		
-//		try{
-//		     RobotMap.switchPositions = GameInfo.getGameSpecificMessage_WeekZero(); //The string will be stored in "gameData."
-//		  }catch (Exception error) {
-//		      System.out.println(error); //If error found, print the error without crashing entire robot code
-//		  }
+		RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
 		
 		Scheduler.getInstance().run();
 		

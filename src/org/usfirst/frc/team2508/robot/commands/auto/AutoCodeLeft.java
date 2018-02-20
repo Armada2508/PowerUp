@@ -1,12 +1,13 @@
-package org.usfirst.frc.team2508.robot.commands;
+package org.usfirst.frc.team2508.robot.commands.auto;
 
 import org.usfirst.frc.team2508.robot.RobotMap;
+import org.usfirst.frc.team2508.robot.commands.cube.MoveCube;
+import org.usfirst.frc.team2508.robot.commands.cube.ReleaseCube;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
-public class AutoCodeStation1 extends CommandGroup {
-	public AutoCodeStation1()
+public class AutoCodeLeft extends CommandGroup {
+	public AutoCodeLeft()
 	{
 		if(RobotMap.switchPositions.charAt(0) == 'L')
 		{
