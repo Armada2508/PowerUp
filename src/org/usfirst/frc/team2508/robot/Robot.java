@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team2508.robot;
 
-
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2508.robot.commands.*;
 import org.usfirst.frc.team2508.robot.commands.auto.*;
 import org.usfirst.frc.team2508.robot.subsystems.*;
+
+import java.io.Console;
 
 import org.usfirst.frc.team2508.robot.Camera;
 
@@ -28,7 +29,7 @@ public class Robot extends IterativeRobot {
 	public static final CubeIntakeSystem CubeIntakeSystem = new CubeIntakeSystem();
 	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
-	
+
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -43,7 +44,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
 		chooser.addObject("Right Drive Station", new AutoCodeRight());
 		SmartDashboard.putData("Auto mode", chooser);
-		
+
 		Camera.startStream();
 	}
 
@@ -59,10 +60,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
-		
+
 		Scheduler.getInstance().run();
-		
+
 	}
 
 	/**
@@ -78,6 +78,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		try {
+			RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+		} catch (Exception e) {
+			System.out.println("Error getting switchPositions: " + e.getMessage());
+		}
 		autonomousCommand = chooser.getSelected();
 
 		/*
@@ -88,11 +93,10 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-		{
+		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
-		
+
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
@@ -112,7 +116,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+
 		// starts a DriveRobot instance, handles driving in teleop
 		Command driveRobotCMD = new DriveRobot();
 		driveRobotCMD.start();
