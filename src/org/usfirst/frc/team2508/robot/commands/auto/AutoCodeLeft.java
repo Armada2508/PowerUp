@@ -54,6 +54,8 @@ public class AutoCodeLeft extends CommandGroup {
 			}
 		} else {
 			// try to cross line
+			addSequential(new DriveMotionMagic(75, 75));
+			System.out.println("Error: RobotMap.switchPositions is either null or has zero length!");
 		}
 	}
 }
