@@ -13,8 +13,6 @@ import org.usfirst.frc.team2508.robot.commands.*;
 import org.usfirst.frc.team2508.robot.commands.auto.*;
 import org.usfirst.frc.team2508.robot.subsystems.*;
 
-import java.io.Console;
-
 import org.usfirst.frc.team2508.robot.Camera;
 
 /**
@@ -43,6 +41,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Left Drive Station", new AutoCodeLeft());
 		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
 		chooser.addObject("Right Drive Station", new AutoCodeRight());
+		chooser.addObject("Cross Line (Any Station)", new AutoCodeStraight());
 		SmartDashboard.putData("Auto mode", chooser);
 
 		Camera.startStream();
