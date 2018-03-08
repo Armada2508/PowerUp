@@ -19,11 +19,11 @@ public class DriveSystem extends Subsystem {
 	public DriveSystem(){
 		
 		// map talons
-		mainRightTalon = new TalonSRX(3);
-		followerRightTalon = new TalonSRX(4);
+		mainRightTalon = new TalonSRX(0); // 3 for this years, 0 for last years
+		followerRightTalon = new TalonSRX(1); // 4 for this years, 1 for last years
 		
-		mainLeftTalon = new TalonSRX(7);
-		followerLeftTalon = new TalonSRX(8);
+		mainLeftTalon = new TalonSRX(3); // 7 for this years, 3 for last years
+		followerLeftTalon = new TalonSRX(4); // 8 for this years, 4 for last years
 		
 		
 		// configures talons as main talons and other talons as followers
@@ -33,9 +33,9 @@ public class DriveSystem extends Subsystem {
 		//mainRightTalon.configMaxIntegralAccumulator(0, 2000, 10);
 		
 		// sets right side and left side so they are opposite directions and oriented so forward = forward
-		mainRightTalon.setInverted(false);
-		followerRightTalon.setInverted(false);
-		mainRightTalon.setSensorPhase(false);
+		mainRightTalon.setInverted(true); // false for this years
+		followerRightTalon.setInverted(true); // false for this years
+		mainRightTalon.setSensorPhase(true); // false for this years
 		
 		mainLeftTalon.setInverted(false);
 		followerLeftTalon.setInverted(false);
