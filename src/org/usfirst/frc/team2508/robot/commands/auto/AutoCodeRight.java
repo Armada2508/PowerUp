@@ -4,13 +4,16 @@ import org.usfirst.frc.team2508.robot.RobotMap;
 import org.usfirst.frc.team2508.robot.commands.cube.MoveCube;
 import org.usfirst.frc.team2508.robot.commands.cube.ReleaseCube;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoCodeRight extends CommandGroup {
-	public AutoCodeRight()
+	public AutoCodeRight(String switchPosition)
 	{
-		if(RobotMap.switchPositions != null && RobotMap.switchPositions.length() > 0) {
-			if(RobotMap.switchPositions.charAt(0) == 'L')
+		super();
+		System.out.println("right position " + switchPosition);
+		if(switchPosition != null && switchPosition.length() > 0) {
+			if(switchPosition.charAt(0) == 'L')
 			{
 				// forward 32
 				addSequential(new DriveMotionMagic(32, 32));
@@ -36,8 +39,9 @@ public class AutoCodeRight extends CommandGroup {
 				addSequential(new ReleaseCube());
 				*/
 			}
-			if(RobotMap.switchPositions.charAt(0) == 'R')
+			else if(switchPosition.charAt(0) == 'R')
 			{
+				addParallel(new AutoLiftCode());
 				// forward 32
 				addSequential(new DriveMotionMagic(32, 32));
 				// turn 90 CW
@@ -47,19 +51,22 @@ public class AutoCodeRight extends CommandGroup {
 				// turn 90 CCW
 				addSequential(new DriveMotionMagic(0, 39));
 				// forward 100
-				addSequential(new DriveMotionMagic(85, 85));
+				addSequential(new DriveMotionMagic(95, 95));
 				// turn 90 CCW
 				addSequential(new DriveMotionMagic(0, 39));
+				addParallel(new MoveCube(RobotMap.SwitchPlacePosition));
 				// forward 50.69
-				addSequential(new DriveMotionMagic(68, 68));
-				// lift cube
+				addSequential(new DriveMotionMagic(24, 24)); // 68 68
+				addSequential(new DriveMotionMagic(-8, -8));
+				/*// lift cube
+				this.addParallel(new MoveCube(RobotMap.SwitchPlacePosition));
 				addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 				// release cube
-				addSequential(new ReleaseCube());
+				addSequential(new ReleaseCube()); */
 			} else {
 				// try to cross line
 				addSequential(new DriveMotionMagic(75, 75));
-				System.out.println("Error: RobotMap.switchPositions is either null or has zero length!");
+				System.out.println("Error: switchPosition is either null or has zero length!");
 }
 		}
 	}

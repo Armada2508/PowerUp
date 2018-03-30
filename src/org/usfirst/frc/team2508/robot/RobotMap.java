@@ -7,7 +7,7 @@ package org.usfirst.frc.team2508.robot;
  * floating around.
  */
 public final class RobotMap {
-	public static String switchPositions = "RRR";
+	public static String switchPositions = "";
 	
 	// stick must be moved this far to drive
 	public static final double DeadbandThreshold = 0.05;
@@ -32,14 +32,15 @@ public final class RobotMap {
 	public static final double CubeSystemTime = 0.5;
 
 	// acceleration/velocity for motionmagic
-	public static final int MMAcceleration = 1500;
-	public static final int MMCruiseVelocity = 600;
+	public static final int MMAcceleration = 2000;
+	public static final int MMCruiseVelocity = 1000;
 	public static final int MMTolerance = 500;
+	public static final int MMTimeoutMillis = 5000;
 
 	class camera {
 		public final static int width = 144;
 		public final static int height = 100;
-		public final static int fps = 30;
+		public final static int fps = 20;
 	}
 
 }

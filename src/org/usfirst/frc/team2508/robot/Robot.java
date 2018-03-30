@@ -27,9 +27,10 @@ public class Robot extends IterativeRobot {
 	public static final CubeIntakeSystem CubeIntakeSystem = new CubeIntakeSystem();
 	public static final CubeLiftSystem CubeLiftSystem = new CubeLiftSystem();
 	public static OI oi;
+	
+	private Command autonomousCommand;
 
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<StartPosition> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -38,10 +39,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Left Drive Station", new AutoCodeLeft());
-		chooser.addObject("Middle Drive Station", new AutoCodeMiddle());
-		chooser.addObject("Right Drive Station", new AutoCodeRight());
-		chooser.addObject("Cross Line (Any Station)", new AutoCodeStraight());
+		chooser.addDefault("Left Drive Station", StartPosition.Left);
+		chooser.addObject("Middle Drive Station", StartPosition.Middle);
+		chooser.addObject("Right Drive Station", StartPosition.Right);
+		chooser.addObject("Cross Line (Any Station)", StartPosition.Straight);
 		SmartDashboard.putData("Auto mode", chooser);
 
 		Camera.startStream();
@@ -77,12 +78,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		String message = null;
 		try {
-			RobotMap.switchPositions = DriverStation.getInstance().getGameSpecificMessage();
+			message = DriverStation.getInstance().getGameSpecificMessage();
 		} catch (Exception e) {
 			System.out.println("Error getting switchPositions: " + e.getMessage());
 		}
-		autonomousCommand = chooser.getSelected();
+		StartPosition startPosition = chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -91,10 +94,28 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
+		
+		if(message == null || message.length() == 0)
+		{
+			autonomousCommand = new AutoCodeStraight();
+		} else {
+			switch(startPosition) {
+			case Left:
+				autonomousCommand = new AutoCodeLeft(message);
+				break;
+			case Middle:
+				autonomousCommand = new AutoCodeMiddle(message);
+				break;
+			case Right:
+				autonomousCommand = new AutoCodeRight(message);
+				break;
+			default:
+				autonomousCommand = new AutoCodeStraight();
+				break;
+			}
 		}
+		
+		autonomousCommand.start();
 
 		SmartDashboard.putData("Auto mode", chooser);
 	}

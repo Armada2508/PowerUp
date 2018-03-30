@@ -7,9 +7,12 @@ import org.usfirst.frc.team2508.robot.commands.cube.ReleaseCube;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoCodeLeft extends CommandGroup {
-	public AutoCodeLeft() {
-		if (RobotMap.switchPositions != null && RobotMap.switchPositions.length() > 0) {
-			if (RobotMap.switchPositions.charAt(0) == 'L') {
+	public AutoCodeLeft(String switchPosition) {
+		super();
+		System.out.println("left position " + switchPosition);
+		if (switchPosition != null && switchPosition.length() > 0) {
+			if (switchPosition.charAt(0) == 'L') {
+				addParallel(new AutoLiftCode());
 				// forward 32
 				addSequential(new DriveMotionMagic(32, 32));
 				// turn 90 CCW
@@ -22,13 +25,15 @@ public class AutoCodeLeft extends CommandGroup {
 				addSequential(new DriveMotionMagic(85, 85));
 				// turn 90 CW
 				addSequential(new DriveMotionMagic(37, 0));
+				addParallel(new MoveCube(RobotMap.SwitchPlacePosition));
 				// forward 50.69
-				addSequential(new DriveMotionMagic(68, 68));
-				// lift cube
+				addSequential(new DriveMotionMagic(26, 26)); // 68 68
+				addSequential(new DriveMotionMagic(-8, -8));
+				/*// lift cube
 				addSequential(new MoveCube(RobotMap.SwitchPlacePosition));
 				// release cube
-				addSequential(new ReleaseCube());
-			} else if (RobotMap.switchPositions.charAt(0) == 'R') {
+				addSequential(new ReleaseCube());*/
+			} else if (switchPosition.charAt(0) == 'R') {
 				// forward 32
 				addSequential(new DriveMotionMagic(32, 32));
 				// turn 90 CCW
@@ -58,4 +63,6 @@ public class AutoCodeLeft extends CommandGroup {
 			System.out.println("Error: RobotMap.switchPositions is either null or has zero length!");
 		}
 	}
+	
+	
 }

@@ -11,6 +11,7 @@ public class DriveMotionMagic extends Command {
 	private double distanceR;
 	private double targetL;
 	private double targetR;
+	private long initializeTime = 0;
 	
 	public DriveMotionMagic(double dL, double dR)
 	{
@@ -26,6 +27,7 @@ public class DriveMotionMagic extends Command {
 		targetR = distanceR + Robot.DriveSystem.getRightPosition();
 		
 		Robot.DriveSystem.driveMotionMagic(targetL, targetR);
+		initializeTime = System.currentTimeMillis();
 	}
 
 	protected boolean isFinished() {
@@ -34,7 +36,10 @@ public class DriveMotionMagic extends Command {
 		currentPositionL = Robot.DriveSystem.getLeftPosition();
 		currentPositionR = Robot.DriveSystem.getRightPosition();
 		
-		return Math.abs(currentPositionL - targetL) <= RobotMap.MMTolerance && Math.abs(currentPositionR - targetR) <= RobotMap.MMTolerance;
+		Boolean doneOnDistance = Math.abs(currentPositionL - targetL) <= RobotMap.MMTolerance && Math.abs(currentPositionR - targetR) <= RobotMap.MMTolerance;
+		Boolean doneOnTime = initializeTime != 0 && System.currentTimeMillis() - initializeTime > RobotMap.MMTimeoutMillis;
+		
+		return doneOnDistance || doneOnTime;
 	}
 	
 	protected void interrupted()
